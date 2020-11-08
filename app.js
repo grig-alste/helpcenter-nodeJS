@@ -17,7 +17,7 @@ app.engine("hbs", expressHbs(
 app.set("view engine", "hbs");
 hbs.registerPartials(__dirname + "/views/partials");
 
-app.use(express.static("public"));
+app.use(express.static(__dirname + "/public"));
 
 app.use("/about", function(request, response){
      
@@ -39,7 +39,7 @@ app.use("/contact", function(request, response){
 app.use("/", function(request, response){
      
     response.render("index.hbs", {
-        title: "Заглушка Домашняя страница",
+        title: "Домашняя страница",
 		text: "Произвольный текст",
     });
 });
