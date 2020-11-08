@@ -17,9 +17,14 @@ app.engine("hbs", expressHbs(
 app.set("view engine", "hbs");
 hbs.registerPartials(__dirname + "/views/partials");
 
+app.use(express.static("public"));
+
 app.use("/about", function(request, response){
      
-    response.send("<h1>О сайте</h1>");
+    response.render("text.hbs", {
+        title: "Текст Домашняя страница",
+		text: "Произвольный текст",
+    });
 });
 
 app.use("/contact", function(request, response){
@@ -33,8 +38,9 @@ app.use("/contact", function(request, response){
 
 app.use("/", function(request, response){
      
-    response.render("home.hbs", {
-        title: "Домашняя страница",
+    response.render("index.hbs", {
+        title: "Заглушка Домашняя страница",
+		text: "Произвольный текст",
     });
 });
 
