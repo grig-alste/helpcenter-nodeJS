@@ -1,5 +1,7 @@
 const express = require("express");
+const hbs = require("hbs");
 const app = express();
+
 let webPort = process.argv[2];
 
 if (typeof webPort == 'undefined') {
@@ -14,24 +16,25 @@ if (typeof webPort == 'undefined') {
 			}
 
 app.set("view engine", "hbs");
-//app.set("views", "templates"); // установка пути к представлениям
+hbs.registerPartials(__dirname + "/views/partials");
 
-app.get("/", function(request, response){
-     
-    response.send("<h1>Главная страница</h1>");
-});
-app.get("/about", function(request, response){
+app.use("/about", function(request, response){
      
     response.send("<h1>О сайте</h1>");
 });
+
 app.use("/contact", function(request, response){
-     
-    response.render("contact.hbs", {
+      
+		response.render("contact.hbs", {
         title: "Мои контакты",
-        emailsVisible: true,
-        emails: ["gavgav@mycorp.com", "mioaw@mycorp.com"],
+        email: ["gavgav@mycorp.com", "mioaw@mycorp.com"],
         phone: "+1234567890"
     });
+});
+
+app.use("/", function(request, response){
+     
+    response.render("home.hbs");
 });
 
 app.listen(webPort, () => {
