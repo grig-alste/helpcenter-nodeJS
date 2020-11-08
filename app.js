@@ -1,6 +1,13 @@
 const express = require("express");
 const app = express();
-const port = 3000
+
+
+let webPort = process.argv[2];
+
+if (typeof webPort == 'undefined') {
+   webPort = 3000;
+}
+
 
 app.set("view engine", "hbs");
 //app.set("views", "templates"); // установка пути к представлениям
@@ -24,6 +31,7 @@ app.use("/contact", function(request, response){
     });
 });
 
-app.listen(port, () => {
-  console.log(`App listening at http://localhost:${port}`)
-})
+app.listen(webPort, () => {
+  console.log(`App listening at http://localhost:${webPort}`)
+});
+console.log("webPort: " + webPort);
