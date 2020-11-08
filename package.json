@@ -1,0 +1,19 @@
+{
+  "name": "helpcenter",
+  "version": "1.0.0",
+  "description": "HelpCenter",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "devstart": "nodemon ./bin/www"
+  },
+  "author": "alste",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.1",
+    "hbs": "^4.1.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.6"
+  }
+}
