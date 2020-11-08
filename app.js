@@ -1,9 +1,23 @@
 const express = require("express");
 const expressHbs = require("express-handlebars");
 const hbs = require("hbs");
-const app = express();
+const mysql = require("mysql2");
+const bodyParser = require("body-parser");
 
+const app = express();
+// Получение аргумента запуска приложения (порт приложеения)
 let webPort = process.argv[2];
+
+const urlencodedParser = bodyParser.urlencoded({extended: false});
+
+// Подключение пула MySQL
+const pool = mysql.createPool({
+  connectionLimit: 5,
+  host: "localhost",
+  user: "root",
+  database: "helpcenter",
+  password: "12345678"
+});
 
 // Настройка layout
 app.engine("hbs", expressHbs(
@@ -18,6 +32,17 @@ app.set("view engine", "hbs");
 hbs.registerPartials(__dirname + "/views/partials");
 
 app.use(express.static(__dirname + "/public"));
+
+// Получение списка пользователей
+app.get("/users", function(req, res){
+    pool.query("SELECT * FROM users", function(err, data) {
+      if(err) return console.log(err);
+      res.render("users.hbs", {
+		  title: "Список пользователей",
+          users: data
+      });
+    });
+});
 
 app.use("/about", function(request, response){
      

@@ -3,3 +3,4 @@ npm install express
 npm install --save-dev nodemon
 
 npm install express-handlebars
+>npm install --save hbs express body-parser mysql2
