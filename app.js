@@ -1,17 +1,20 @@
 const express = require("express");
 const app = express();
-
-
 let webPort = process.argv[2];
 
 if (typeof webPort == 'undefined') {
-   webPort = 3000;
-}
-
+	webPort = 3000;
+		} else { 
+			if ( webPort > 0 && webPort < 49150) {
+//				console.log("webPort: " + webPort);
+				} else {
+					console.log("Недопустимое значение параметра webPort: " + webPort);
+					webPort = 3000;
+				}
+			}
 
 app.set("view engine", "hbs");
 //app.set("views", "templates"); // установка пути к представлениям
-
 
 app.get("/", function(request, response){
      
@@ -32,6 +35,5 @@ app.use("/contact", function(request, response){
 });
 
 app.listen(webPort, () => {
-  console.log(`App listening at http://localhost:${webPort}`)
+  console.log(`Приложение доступно по адресу - http://localhost:${webPort}`)
 });
-console.log("webPort: " + webPort);
