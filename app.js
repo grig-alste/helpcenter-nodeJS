@@ -14,7 +14,8 @@ const urlencodedParser = bodyParser.urlencoded({extended: false});
 const pool = mysql.createPool({
   connectionLimit: 5,
   host: "localhost",
-  user: "root",
+  port: 3306,
+  user: "helpcenter",
   database: "helpcenter",
   password: "12345678"
 });
@@ -42,6 +43,12 @@ app.get("/users", function(req, res){
           users: data
       });
     });
+});
+
+app.get("/create_user", function(req, res){
+      res.render("create_user.hbs", {
+		  title: "Создать нового пользователя",
+	  });
 });
 
 app.use("/about", function(request, response){

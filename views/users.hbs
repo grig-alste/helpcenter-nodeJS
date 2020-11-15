@@ -1,24 +1,88 @@
 <div class="section">
 	<div class="container">
 		<div class="row">
-			<div class="col-sm-12">
+				<div class="col-sm-12">
+					<p><a href="/create_user">Добавить пользователя</a></p>
+	    				<table class="jobs-list">
+	    					<tr>
+	    						<th>Имя</th>
+	    						<th>E-mail</th>
+								<th>Права</th>
+								<th>Описание</th>
+	    						<th colspan="2">Редактирование</th>
+	    					</tr>
+							
+							{{#each users}}
+							
+								<tr>
+									<!-- Position -->
+									<td class="job-position">
+										<a href="users/{{this.id}}">{{this.s_name}} {{this.f_name}} {{this.m_name}}</a> <span class="label label-danger">Admin</span>
+									</td>
+									
+									<!-- Location -->
+									<td class="job-location">
+										<div class="job-country">{{this.email}}</div>
+									</td>
+									
+									<!-- Location -->
+									<td class="job-location">
+										<div class="job-country">{{this.role}}</div>
+									</td>
+									
+									<!-- Location -->
+									<td class="job-location">
+										<div class="job-country">{{this.comment}}</div>
+									</td>
+									
+									<!-- Job Type -->
+									<td class="job-type hidden-phone">
+									
+									<!-- <a href="/edit/{{this.id}}">Изменить</a> -->
+										<form action="edit/{{this.id}}" method="POST" style="display:inline;">
+											<input type="submit" value="Изменить" />
+										</form>
+									
+									</td>
+									<td class="job-type hidden-phone">
+									<form action="delete/{{this.id}}" method="POST" style="display:inline;">
+											<input type="submit" value="Удалить" />
+										</form>
+										</td>
+								</tr>
+	    					
+							{{/each}}
+							
+	    				</table>
+	    		</div>
+		
+		
+			<div class="col-sm-12"><br><br>
 				<p><a href="/create">Добавить пользователя</a></p>
-					<table>
-						<tr><th>Name</th><th>Age</th><th></th></tr>
+					<table border=1>
+						<tr><th>Name</th><th>Age</th><th colspan="2">Редактирование</th></tr>
 							{{#each users}}
 								<tr>
 									<td>{{this.name}}</td>
 									<td>{{this.age}}</td>
 								<td>
-									<a href="/edit/{{this.id}}">Edit</a>|
+									<!-- <a href="/edit/{{this.id}}">Изменить</a> -->
+									<form action="edit/{{this.id}}" method="POST" style="display:inline;">
+										<input type="submit" value="Изменить" />
+									</form>
+								</td>
+								<td>
 									<form action="delete/{{this.id}}" method="POST" style="display:inline;">
-										<input type="submit" value="Delete" />
+										<input type="submit" value="Удалить" />
 									</form>
 								</td>
 								</tr>
 								{{/each}}
 					</table>
 			</div>
+			
+			
+			
 		</div>
 	</div>
 </div>
