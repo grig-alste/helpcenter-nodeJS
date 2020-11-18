@@ -51,6 +51,22 @@ app.get("/create_user", function(req, res){
 	  });
 });
 
+app.post("/create_user", urlencodedParser, function (req, res) {
+         
+    if(!req.body) return res.sendStatus(400);
+    const email = req.body.email;
+    const s_name = req.body.s_name;
+	const f_name = req.body.f_name;
+	const m_name = req.body.m_name;
+	const admin = req.body.admin;
+	const comment = req.body.comment;
+	const pass = req.body.pass;
+    pool.query("INSERT INTO users (email, s_name, f_name, m_name) VALUES (?,?,?,?)", [email, s_name, f_name, m_name], function(err, data) {
+      if(err) return console.log(err);
+      res.redirect("/users");
+    });
+});
+
 app.use("/about", function(request, response){
      
     response.render("text.hbs", {

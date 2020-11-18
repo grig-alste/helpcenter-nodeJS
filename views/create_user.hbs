@@ -3,38 +3,38 @@
 				<div class="row">
 					<div class="col-sm-5">
 						<div class="basic-login">
-							<form role="form">
+							<form role="form" method="POST">
 								<div class="form-group">
 		        				 	<label for="register-username"><i class="icon-user"></i> <b>E-mail</b></label>
-									<input class="form-control" id="register-username" type="email" placeholder="">
+									<input class="form-control" id="register-username" type="email" name="email" placeholder="">
 								</div>
 								<div class="form-group">
 		        				 	<label for="register-username"><i class="icon-user"></i> <b>Фамилия</b></label>
-									<input class="form-control" id="register-username" type="text" placeholder="">
+									<input class="form-control" id="register-username" type="text" name="s_name" placeholder="">
 								</div>
 								<div class="form-group">
 		        				 	<label for="register-username"><i class="icon-user"></i> <b>Имя</b></label>
-									<input class="form-control" id="register-username" type="text" placeholder="">
+									<input class="form-control" id="register-username" type="text" name="f_name" placeholder="">
 								</div>
 								<div class="form-group">
 		        				 	<label for="register-username"><i class="icon-user"></i> <b>Отчество</b></label>
-									<input class="form-control" id="register-username" type="text" placeholder="">
+									<input class="form-control" id="register-username" type="text" name="m_name" placeholder="">
 								</div>
 								<div class="form-group">
 		        				 	<label for="register-username"><i class="icon-user"></i> <b>Администратор</b></label>
-									<input class="checkbox" type="checkbox" >
+									<input class="checkbox" name="admin" type="checkbox" >
 								</div>
 								<div class="form-group">
 		        				 	<label for="register-username"><i class="icon-user"></i> <b>Коментарий</b></label>
-									<input class="form-control" id="register-username" type="text" placeholder="">
+									<input class="form-control" id="register-username" type="text" name="comment" placeholder="">
 								</div>
 								<div class="form-group">
 		        				 	<label for="register-password"><i class="icon-lock"></i> <b>Пароль</b></label>
-									<input class="form-control" id="register-password" type="password" placeholder="">
+									<input class="form-control" id="register-password" type="password" name="pass" placeholder="">
 								</div>
 								<div class="form-group">
 		        				 	<label for="register-password2"><i class="icon-lock"></i> <b>Повторите пароль</b></label>
-									<input class="form-control" id="register-password2" type="password" placeholder="">
+									<input class="form-control" id="register-password2" type="password" name="pass2" placeholder="">
 								</div>
 								<div class="form-group">
 									<button type="submit" class="btn pull-right">Добавить</button>
